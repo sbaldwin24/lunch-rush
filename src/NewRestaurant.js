@@ -1,37 +1,46 @@
-import React, { Component, PropTypes } from 'react';
-import './NewRestaurant.css';
+import React, { Component, PropTypes } from "react";
+import { database } from "./firebase";
+import "./NewRestaurant.css";
 
+/**
+ * @class
+ * @see https://facebook.github.io/react/docs/react-api.html#react.component
+ * @see https://facebook.github.io/react/docs/react-component.html
+ */
 class NewRestaurant extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: ''
-    };
+  state = {
+    name: ""
+  };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  handleChange = e => {
+    const name = e.target.value;
+    this.setState({
+      name
+    });
+  };
 
-  handleSubmit(event) {
-    event.preventDefault();
-  }
+  handleSubmit = e => {
+    const { name } = this.state;
+    e.preventDefault();
+    this.restaurantsRef = database.ref("/restaurants");
+    this.restaurantsRef.push({ name });
+  };
 
+  /**
+   * @returns {object}
+   */
   render() {
     const { name } = this.state;
 
     return (
-      <form
-        className="NewRestaurant"
-      >
+      <form className="NewRestaurant">
         <input
           type="text"
-          value={ name }
+          value={name}
           placeholder="Name of Fine Establishment"
-          onChange={(event) => this.setState({ name: event.target.value })}
+          onChange={this.handleChange}
         />
-        <button
-          onClick={this.handleSubmit}
-          disabled={!name}
-        >
+        <button onClick={this.handleSubmit} disabled={!name}>
           Submit
         </button>
       </form>
