@@ -3,10 +3,14 @@ import { auth, database } from "./firebase";
 import CurrentUser from "./CurrentUser";
 import SignIn from "./SignIn";
 import NewRestaurant from "./NewRestaurant";
-import Restaurant from "./Restaurants";
+import Restaurants from "./Restaurants";
 import "./Application.css";
 import map from "lodash/map";
 
+/**
+ * @see https://firebase.google.com/docs/auth/web/manage-users
+ * @see https://lodash.com/docs/4.17.4#map
+ */
 class Application extends React.Component {
   state = {
     currentUser: null,
@@ -28,6 +32,9 @@ class Application extends React.Component {
     });
   }
 
+  /**
+   * @returns {object}
+   */
   render() {
     const { currentUser, restaurants } = this.state;
     return (
@@ -40,9 +47,7 @@ class Application extends React.Component {
           {currentUser && (
             <div>
               <NewRestaurant />
-              {map(restaurants, (restaurant, key) => (
-                <p key={key}>{restaurant.name}</p>
-              ))}
+              <Restaurants restaurants={restaurants} user={currentUser} />
               <CurrentUser user={currentUser} />
             </div>
           )}

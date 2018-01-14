@@ -1,21 +1,19 @@
 {
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
       "jsx": true,
-      "mocha": true
-    }
+      "modules": true
+    },
+    "ecmaVersion": 6,
+    "sourceType": "module"
   },
   "env": {
+    "es6": true,
     "browser": true,
     "node": true
-  },
-  "plugins": [
-    "react"
-  ],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "rules": {
-    "semi": 2,
-    "no-console": 0
   }
 }
