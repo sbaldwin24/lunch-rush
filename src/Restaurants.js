@@ -29,7 +29,7 @@ class Restaurants extends React.Component {
    * @returns {object}
    */
   render() {
-    const { restaurants } = this.props;
+    const { user, restaurants } = this.props;
 
     return (
       <section className="Restaurants">
@@ -37,6 +37,7 @@ class Restaurants extends React.Component {
           <Restaurant
             key={key}
             {...restaurant}
+            user={user}
             handleSelect={() => this.handleSelect(key)}
             handleDeselect={() => this.handleDeselect(key)}
           />
