@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from "react";
+import React, { PropTypes } from "react";
 import { database } from "./firebase";
 import "./NewRestaurant.css";
 
@@ -7,7 +7,7 @@ import "./NewRestaurant.css";
  * @see https://facebook.github.io/react/docs/react-api.html#react.component
  * @see https://facebook.github.io/react/docs/react-component.html
  */
-class NewRestaurant extends Component {
+class NewRestaurant extends React.Component {
   state = {
     name: ""
   };

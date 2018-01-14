@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import map from 'lodash/map';
-import './Restaurant.css';
+import React, { PropTypes } from "react";
+import map from "lodash/map";
+import "./Restaurant.css";
 
-class Restaurant extends Component {
-  render () {
-    return (
-      <article className="Restaurant">
-      </article>
-    );
+class Restaurant extends React.Component {
+  /**
+   * @returns {object}
+   */
+  render() {
+    return <article className="Restaurant" />;
   }
 }
 
